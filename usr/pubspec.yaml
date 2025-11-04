@@ -1,5 +1,5 @@
 name: couldai_user_app
-description: "A new Flutter project."
+description: "TraceAI: The Silent Witness - AI-powered facial recognition app for tracing missing persons"
 # The following line prevents the package from being accidentally published to
 # pub.dev using `flutter pub publish`. This is preferred for private packages.
 publish_to: 'none' # Remove this line if you wish to publish to pub.dev
@@ -34,6 +34,32 @@ dependencies:
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^1.0.8
+
+  # Firebase packages for authentication and messaging
+  firebase_auth: ^4.15.0
+  firebase_messaging: ^14.7.0
+  cloud_firestore: ^4.14.0
+
+  # Google Maps for location selection
+  google_maps_flutter: ^2.5.3
+
+  # Image picker for uploading photos
+  image_picker: ^1.0.4
+
+  # State management
+  provider: ^6.1.1
+
+  # Local notifications
+  flutter_local_notifications: ^16.3.2
+
+  # Shared preferences for settings
+  shared_preferences: ^2.2.2
+
+  # Internationalization
+  intl: ^0.19.0
+
+  # Google Fonts for Poppins
+  google_fonts: ^6.1.0
 
 dev_dependencies:
   flutter_test:
