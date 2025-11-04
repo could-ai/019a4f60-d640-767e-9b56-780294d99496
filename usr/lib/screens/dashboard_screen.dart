@@ -33,7 +33,7 @@ class DashboardScreen extends StatelessWidget {
           ),
         ],
       ),
-      body: user.role == 'police' ? _buildPoliceDashboard() : _buildCitizenDashboard(),
+      body: user.role == 'police' ? _buildPoliceDashboard(context) : _buildCitizenDashboard(context),
       floatingActionButton: FloatingActionButton(
         onPressed: () => Navigator.pushNamed(context, '/upload'),
         child: const Icon(Icons.add),
@@ -41,7 +41,7 @@ class DashboardScreen extends StatelessWidget {
     );
   }
 
-  Widget _buildPoliceDashboard() {
+  Widget _buildPoliceDashboard(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.all(16.0),
       child: Column(
@@ -63,16 +63,16 @@ class DashboardScreen extends StatelessWidget {
                 return ListView.builder(
                   itemCount: cases.length,
                   itemBuilder: (context, index) {
-                    final case = cases[index];
+                    final caseItem = cases[index];
                     return Card(
                       child: ListTile(
-                        title: Text(case.name),
-                        subtitle: Text('Status: ${case.status}'),
-                        trailing: Text('${case.age} years old'),
+                        title: Text(caseItem.name),
+                        subtitle: Text('Status: ${caseItem.status}'),
+                        trailing: Text('${caseItem.age} years old'),
                         onTap: () => Navigator.pushNamed(
                           context,
                           '/match_results',
-                          arguments: case.id,
+                          arguments: caseItem.id,
                         ),
                       ),
                     );
@@ -86,7 +86,7 @@ class DashboardScreen extends StatelessWidget {
     );
   }
 
-  Widget _buildCitizenDashboard() {
+  Widget _buildCitizenDashboard(BuildContext context) {
     final user = context.watch<UserProvider>().user!;
     return Padding(
       padding: const EdgeInsets.all(16.0),
@@ -109,16 +109,16 @@ class DashboardScreen extends StatelessWidget {
                 return ListView.builder(
                   itemCount: cases.length,
                   itemBuilder: (context, index) {
-                    final case = cases[index];
+                    final caseItem = cases[index];
                     return Card(
                       child: ListTile(
-                        title: Text(case.name),
-                        subtitle: Text('Status: ${case.status}'),
-                        trailing: Text('${case.age} years old'),
+                        title: Text(caseItem.name),
+                        subtitle: Text('Status: ${caseItem.status}'),
+                        trailing: Text('${caseItem.age} years old'),
                         onTap: () => Navigator.pushNamed(
                           context,
                           '/match_results',
-                          arguments: case.id,
+                          arguments: caseItem.id,
                         ),
                       ),
                     );

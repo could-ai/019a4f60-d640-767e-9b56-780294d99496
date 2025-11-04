@@ -13,14 +13,14 @@ class FirebaseService {
   final List<Match> _mockMatches = [];
 
   // Authentication methods (mocked for now)
-  Future<UserModel?> signIn(String email, String password) async {
+  Future<User?> signIn(String email, String password) async {
     // TODO: Replace with real Firebase Auth when backend is connected
     await Future.delayed(const Duration(seconds: 1)); // Simulate network delay
     
     if (email == 'police@example.com' && password == 'password') {
-      return UserModel(id: 'police_1', email: email, role: 'police', name: 'Officer John');
+      return User(id: 'police_1', email: email, role: 'police', name: 'Officer John');
     } else if (email == 'citizen@example.com' && password == 'password') {
-      return UserModel(id: 'citizen_1', email: email, role: 'citizen', name: 'Jane Citizen');
+      return User(id: 'citizen_1', email: email, role: 'citizen', name: 'Jane Citizen');
     }
     return null;
   }
@@ -36,9 +36,9 @@ class FirebaseService {
     return _mockCases.where((c) => c.userId == userId).toList();
   }
 
-  Future<void> addCase(Case case) async {
+  Future<void> addCase(Case caseItem) async {
     // TODO: Add to Firestore
-    _mockCases.add(case);
+    _mockCases.add(caseItem);
   }
 
   // Match management (mocked)

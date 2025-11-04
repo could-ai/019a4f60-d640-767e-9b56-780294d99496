@@ -124,7 +124,7 @@ class _UploadScreenState extends State<UploadScreen> {
 
     try {
       final user = context.read<UserProvider>().user!;
-      final case = Case(
+      final caseItem = Case(
         id: 'case_${DateTime.now().millisecondsSinceEpoch}',
         userId: user.id,
         name: _nameController.text,
@@ -137,10 +137,10 @@ class _UploadScreenState extends State<UploadScreen> {
         submittedAt: DateTime.now(),
       );
 
-      await FirebaseService().addCase(case);
+      await FirebaseService().addCase(caseItem);
 
       // Trigger AI matching
-      final match = await AIService().findMatch(case.id, case.imageUrls);
+      final match = await AIService().findMatch(caseItem.id, caseItem.imageUrls);
       if (match != null) {
         await FirebaseService().addMatch(match);
       }
